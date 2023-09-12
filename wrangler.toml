@@ -1,0 +1,23 @@
+name = "remix-cloudflare-workers"
+
+workers_dev = true
+main = "./build/index.js"
+# https://developers.cloudflare.com/workers/platform/compatibility-dates
+compatibility_date = "2023-04-20"
+
+[site]
+  bucket = "./public"
+
+[build]
+  command = "npm run build"
+
+[[kv_namespaces]]
+binding = "SESSION_KV"
+id = "e92901fdae4b48189663563da98f50d8"
+preview_id = "67e29b51efd74d5fb36ea6f7302018e7"
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "PRACTICE_DB"
+database_id = "8241753c-9c78-4785-85c0-f22cf53c8df8"
+migrations_dir= "db/migrate"
